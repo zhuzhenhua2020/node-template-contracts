@@ -493,17 +493,17 @@ mod erc20 {
 
         #[ink::test]
         fn balance_of_works() {
-            let erc20 = Erc20::new(100);
+            let erc20 = Erc20::new(1000);
             let emitted_events = ink_env::test::recorded_events().collect::<Vec<_>>();
             assert_transfer_event(
                 &emitted_events[0],
                 None,
                 Some(AccountId::from([0x01; 32])),
-                100,
+                1000,
             );
             let accounts =
                 ink_env::test::default_accounts::<ink_env::DefaultEnvironment>();
-            assert_eq!(erc20.balance_of(accounts.alice), 100);
+            assert_eq!(erc20.balance_of(accounts.alice), 1000);
             assert_eq!(erc20.balance_of(accounts.bob), 0);
         }
 
